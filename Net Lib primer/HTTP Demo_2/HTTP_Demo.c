@@ -1,7 +1,7 @@
 #include "__Lib_NetEthEnc28j60.h"
 #include "__Lib_NetEthEnc28j60Private.h"
 #include "recources.h"
-//#include "html.h"
+
 // mE ehternet NIC pinout
 sbit Eth1_Link at RB5_bit;
 sbit Net_Ethernet_28j60_Rst at LATA5_bit;
@@ -20,7 +20,6 @@ const unsigned char httpMimeTypeScript[] = "text/plain\n\n" ;           // TEXT 
 unsigned char httpMethod[] = "GET /";
 unsigned char httpRequ[] = "GET / HTTP/1.1";
 char sendHTML_mark = 0;
-char txt[27];
 unsigned int pos[10];
 char i;
 unsigned long   httpCounter = 0 ;                                       // counter of HTTP requests
@@ -29,8 +28,8 @@ int index_br = 0;
 char buff_slanje;
 char promena1[] =" 30px";
 char promena2[] ="#999999";
-char promena3[] ="Naslov je mnogo dug";
-int pg_size = 4880 ;
+char promena3[] ="Proba";
+int pg_size = 4868 ;
 char end_petlja = 0;
 
 /***********************************
@@ -63,7 +62,7 @@ char disconnect_flag     = RESET;
 
 int my_strstr(int index, char *s1)
 {
-  int i, j, k;
+  int i, j;
   int flag = 0;
 
   //if ((s2 == 0 || s1 == 0)) return 0;

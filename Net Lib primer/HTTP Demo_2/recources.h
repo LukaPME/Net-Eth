@@ -3,11 +3,8 @@ const char html_code[] = "\\HTTP/1.1 200 OK\nConnection: close\nContent-type: te
 <head>\
 <head>\
 <style>\
-\
-body{\margin: 0 ; padding:0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.4em; color: #444444; background-color: #777777;\
-}\
-h1 {    margin:0px; font-weight: bold; font-size: 22px; color:#518b10;\
-}\
+body{\margin: 0 ; padding:0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.4em; color: #444444; background-color: #777777 ;}\
+h1 {    margin:0px; font-weight: bold; font-size: 22px; color:#518b10; }\
 h1 span {\
         font-size: 14px;\
         color: #666666;\
@@ -77,12 +74,11 @@ h2 {\
 #templatemo_footer a {\
         color: #FFFFFF;\
 }\
-\
 </style>\
 </head>\
 \
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />\
-<title> EasyPIC PRO v7      </title>\
+<title> EasyP </title>\
 <meta name='keywords' content='free website template, CSS, cooking website, free layout download, templatemo' />\
 <meta name='description' content='Cooking Template - free CSS website layout for anyone' />\
 </head>\
