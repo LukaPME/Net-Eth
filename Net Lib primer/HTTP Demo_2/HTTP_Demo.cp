@@ -174,14 +174,14 @@ extern unsigned int Net_Ethernet_28j60_pktLen;
 
 extern char Net_Ethernet_28j60_bufferTCP(char c, char tx, char curr_sock);
 extern char Net_Ethernet_28j60_txTCP (char flag, char curr_sock);
-#line 7 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+#line 5 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
 sbit Eth1_Link at RB5_bit;
 sbit Net_Ethernet_28j60_Rst at LATA5_bit;
 sbit Net_Ethernet_28j60_CS at LATA4_bit;
 sbit Eth1_Link_Direction at TRISB5_bit;
 sbit Net_Ethernet_28j60_Rst_Direction at TRISA5_bit;
 sbit Net_Ethernet_28j60_CS_Direction at TRISA4_bit;
-#line 18 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+#line 16 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
 const code unsigned char httpHeader[] = "HTTP/1.1 200 OK\nContent-Length: 7787\nConnection: close\nContent-type: ";
 const code unsigned char httpMimeTypeHTML[] = "text/html\n\n";
 const unsigned char httpMimeTypeScript[] = "text/plain\n\n" ;
@@ -192,13 +192,13 @@ char sendHTML_mark = 0;
 unsigned int pos[10];
 char i;
 unsigned long httpCounter = 0 ;
-char txt[7];
-char txt1[4];
+char txt[7] = "";
+char txt1[4]= "";
 int ij;
 int pg_size;
-#line 106 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
-char *html_code = "HTTP/1.1 200 OK\nConnection: close\nContent-type: text/html\n\n<HTML><HEAD><link rel=\"icon\" type=\"image/png\" href=\"https://png.icons8.com/ios/50/000000/facebook.png\"><TITLE>PME Clock</TITLE></HEAD><BODY><style>body {background-color: #ddffcc;}</style><center><h2>PME Clock</h2><h3>Time | <a href=/2>SNTP</a> | <a href=/3>Network</a> | <a href=/4>System</a> | <a href=/admin>ADMIN</a></h3><table border=1 style=\"font-size:20px ;font-family: terminal ;\" width=500><tr><td>Date and Time</td><td align=right><script>document.write(\"Cao\")</script></td></tr><tr><td>Unix Epoch</td><td align=right><script>document.write(\"EPOCH\")</script></td></tr><tr><td>Julian Day</td><td align=right><script>document.write(\"EPOCH / 24 / 3600 + 2440587.5\")</script></td></tr><tr><td>Last sync</td><td align=right><script>document.write(\"LAST\")</script></td></tr><HTML><HEAD></table><br>Pogledajte ceo proizvodni program na <a href=http://www.pme.rs target=_blank>www.pme.rs</a></center></BODY></HTML>" ;
-#line 152 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+#line 101 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+char html_code[] = "\HTTP/1.1 200 OK\nConnection: close\nContent-type: text/html\n\n<HTML><HEAD><link rel=\"icon\" type=\"image/png\" href=\"https://png.icons8.com/ios/50/000000/facebook.png\"><TITLE>PME Clock</TITLE></HEAD><BODY><style>body {background-color: #ddffcc;}</style><center><h2>PME Clock</h2><h3>Time | <a href=/2>SNTP</a> | <a href=/3>Network</a> | <a href=/4>System</a> | <a href=/admin>ADMIN</a></h3><table border=1 style=\"font-size:20px ;font-family: terminal ;\" width=500><tr><td>Date and Time</td><td align=right><script>document.write(\"Cao\")</script></td></tr><tr><td>Unix Epoch</td><td align=right><script>document.write(\"EPOCH\")</script></td></tr><tr><td>Julian Day</td><td align=right><script>document.write(\"EPOCH / 24 / 3600 + 2440587.5\")</script></td></tr><tr><td>Last sync</td><td align=right><script>document.write(\"LAST\")</script></td></tr><HTML><HEAD></table><br>Pogledajte ceo proizvodni program na <a href=http://www.pme.rs target=_blank>www.pme.rs</a></center></BODY></HTML>" ;
+#line 107 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
 unsigned char myMacAddr[6] = {0x00, 0x14, 0xA5, 0x76, 0x19, 0x3b};
 unsigned char myIpAddr[4] = {192, 168, 1, 222 };
 unsigned char gwIpAddr[4] = {192, 168, 1, 1 };
@@ -207,7 +207,7 @@ unsigned char dnsIpAddr[4] = {192, 168, 20, 1 };
 
 unsigned char getRequest[15];
 unsigned char dyna[31] ;
-#line 226 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+#line 181 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
 SOCKET_28j60_Dsc *currSocket, *socketHTML;
 const char *indexPagePtr;
 
@@ -217,14 +217,63 @@ const char SET = 1;
 char sendRestOfPage_flag = RESET;
 char disconnect_flag = RESET;
 
+int my_strstr(int index, char *s2, char *s1, char *s3)
+{
+ int i, j, k;
+ int flag = 0;
+
+
+
+ for( i = index; s2[i] != '\0'; i++)
+ {
+ if (s2[i] == s1[0])
+ {
+ for (j = i; ; j++)
+ {
+ if (s1[j-i] == '\0'){ flag = 1;
+ break;}
+ if (s2[j] == s1[j-i])
+ continue;
+ else
+ break;
+ }
+ }
+ if (flag == 1)
+ break;
+ }
+
+ k=0;
+ for ( i = j ; i < (j + strlen(s3)) ; i++) {
+ html_code[i] = s3[k];
+ k++;
+ }
+ return j;
+#line 225 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+}
+
+
 void Net_Ethernet_28j60_UserTCP(SOCKET_28j60_Dsc *socket) {
  unsigned int len;
- unsigned int i ;
+ int i ;
+ int res = 0;
+ int rezSta;
  char pg_num;
-#line 257 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+
+ char promena[] ="#aa0f0f";
+ char niz[] ="background-color: ";
+
+ char j = 0;
+ char pomniz[] = "";
+#line 258 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
  if (sendHTML_mark == 0) {
  sendHTML_mark = 1;
-#line 277 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+#line 274 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+ res = 0;
+ res = my_strstr(res, html_code, niz, promena);
+#line 282 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+ res = my_strstr(res, html_code,"font-size:","40px");
+
+
  pg_size = strlen(html_code);
 
  }
@@ -233,6 +282,7 @@ void Net_Ethernet_28j60_UserTCP(SOCKET_28j60_Dsc *socket) {
 
 
  if (sendHTML_mark == 1) {
+
  while (pos[socket->ID] < pg_size) {
  if (Net_Ethernet_28j60_putByteTCP(html_code[pos[socket->ID]++], socket) == 0) {
  pos[socket->ID]--;
@@ -247,7 +297,8 @@ void Net_Ethernet_28j60_UserTCP(SOCKET_28j60_Dsc *socket) {
  }
  }
 }
-#line 311 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+
+
 unsigned int Net_Ethernet_28j60_UserUDP(UDP_28j60_Dsc *udpDsc) {
 
  unsigned int len;
@@ -312,7 +363,7 @@ void interrupt() {
  TMR0IF_bit = 0;
  }
 }
-#line 380 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+#line 379 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
 void main() {
  MCUInit();
  ANSEL = 0x0C;
@@ -330,7 +381,7 @@ void main() {
  PORTD = 0 ;
  TRISD = 0 ;
  SLRCON = 0;
-#line 403 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+#line 402 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
  Net_Ethernet_28j60_stackInitTCP();
  SPI1_Init();
  Net_Ethernet_28j60_Init(myMacAddr, myIpAddr,  0b1 ) ;

@@ -1,5 +1,3 @@
-
-
 #include "__Lib_NetEthEnc28j60.h"
 #include "__Lib_NetEthEnc28j60Private.h"
 
@@ -25,17 +23,11 @@ char sendHTML_mark = 0;
 unsigned int pos[10];
 char i;
 unsigned long   httpCounter = 0 ;                                       // counter of HTTP requests
-char txt[7];
-char txt1[4];
+char txt[7] = "";
+char txt1[4]= "";
 int ij;
 int pg_size;
 
-/*
- * web page, splited into 2 parts :
- * when coming short of ROM, fragmented data is handled more efficiently by linker
- *
- * this HTML page calls the boards to get its status, and builds itself with javascript
- */
 
 //<meta http-equiv=\"refresh\" content=\"5;url=http://192.168.1.200\">\
 //<script src=/s></script>\
@@ -83,8 +75,11 @@ Pogledajte ceo proizvodni program na <a href=http://www.pme.rs target=_blank>www
 </center>\
 </BODY></HTML>" ;*/
 
-char    *html_code = "\
+/*char    *HTMLheader = "\
 HTTP/1.1 200 OK\nConnection: close\nContent-type: text/html\n\n\
+" ;*/
+
+char    html_code[] = "\HTTP/1.1 200 OK\nConnection: close\nContent-type: text/html\n\n\
 <HTML><HEAD>\
 <link rel=\"icon\" type=\"image/png\" href=\"https://png.icons8.com/ios/50/000000/facebook.png\">\
 <TITLE>PME Clock</TITLE>\
@@ -105,46 +100,6 @@ Pogledajte ceo proizvodni program na <a href=http://www.pme.rs target=_blank>www
 </center>\
 </BODY></HTML>" ;
 
-//char html_code[1000] = "";
-
-/*const   char    *indexPage=                   // Change the IP address of the page to be refreshed
-"<HTML><HEAD></HEAD><BODY>\
-<h1>PIC + ENC28J60 Mini Web Server</h1>\
-<a href=/>Reload</a>\
-<table><tr><td valign=top><table border=1 style=\"font-size:20px ;font-family: terminal ;\">\
-<tr><th colspan=2>ADC</th></tr>\
-<tr><td>AN2</td><td><script>document.write(AN2)</script></td></tr>\
-<tr><td>AN3</td><td><script>document.write(AN3)</script></td></tr>\
-</table></td><td><table border=1 style=\"font-size:20px ;font-family: terminal ;\">\
-<tr><th colspan=2>PORTB</th></tr>\
-<script>\
-var str,i;\
-str=\"\";\
-for(i=0;i<8;i++)\
-{str+=\"<tr><td bgcolor=pink>BUTTON #\"+i+\"</td>\";\
-if(PORTB&(1<<i)){str+=\"<td bgcolor=red>ON\";}\
-else {str+=\"<td bgcolor=#cccccc>OFF\";}\
-str+=\"</td></tr>\";}\
-document.write(str) ;\
-</script>\
-" ;
-
-const   char    *indexPage2 =  "</table></td><td>\
-<table border=1 style=\"font-size:20px ;font-family: terminal ;\">\
-<tr><th colspan=3>PORTD</th></tr>\
-<script>\
-var str,i;\
-str=\"\";\
-for(i=0;i<8;i++)\
-{str+=\"<tr><td bgcolor=yellow>LED #\"+i+\"</td>\";\
-if(PORTD&(1<<i)){str+=\"<td bgcolor=red>ON\";}\
-else {str+=\"<td bgcolor=#cccccc>OFF\";}\
-str+=\"</td><td><a href=/t\"+i+\">Toggle</a></td></tr>\";}\
-document.write(str) ;\
-</script>\
-</table></td></tr></table>\
-This is len length #<script>document.write(LENLEN)</script></BODY></HTML>\
-" ;*/
 
 /***********************************
  * RAM variables
@@ -232,10 +187,56 @@ const char SET   = 1;
 char sendRestOfPage_flag = RESET;
 char disconnect_flag     = RESET;
 
+int my_strstr(int index, char *s2, char *s1, char *s3)
+{
+  int i, j, k;
+  int flag = 0;
+
+  //if ((s2 == 0 || s1 == 0)) return 0;
+
+  for( i = index; s2[i] != '\0'; i++)
+  {
+    if (s2[i] == s1[0])
+    {
+      for (j = i; ; j++)
+      {
+        if (s1[j-i] == '\0'){ flag = 1; 
+        break;}
+        if (s2[j] == s1[j-i]) 
+        continue;
+        else 
+        break;
+      }
+    }
+    if (flag == 1) 
+    break;
+  }
+
+   k=0;
+   for ( i = j ; i < (j + strlen(s3)) ; i++) {
+       html_code[i] = s3[k];
+       k++;
+   }
+   return j;
+} /*if (flag){
+  //return (s2+i);
+  return (j);
+  }
+  else return 0;*/
+
+
 void Net_Ethernet_28j60_UserTCP(SOCKET_28j60_Dsc *socket) {
   unsigned int    len;                   // my reply length
-  unsigned int    i ;                    // general purpose integer
+  int    i ;
+  int res = 0;
+  int rezSta;                   // general purpose integer
   char pg_num;
+  //char promena[6] ={'7','f','1','1','1','a'};
+  char promena[] ="#aa0f0f";
+  char niz[] ="background-color: ";
+  //char niz[] = "";
+  char j = 0;
+  char pomniz[] = "";
 
   // I listen only to web request on port 80
   /*if(socket->destPort != 80) {
@@ -256,6 +257,7 @@ void Net_Ethernet_28j60_UserTCP(SOCKET_28j60_Dsc *socket) {
 
     if (sendHTML_mark == 0) {
       sendHTML_mark = 1;
+
       /*switch(getRequest[5])
          {
          case 's':
@@ -269,19 +271,18 @@ void Net_Ethernet_28j60_UserTCP(SOCKET_28j60_Dsc *socket) {
               //strcat(html_code, HTMLheader);
               //strcat(html_code, HTMLtime);
               //strcat(html_code, HTMLfooter);
-              
-            //  background-color:  zazamenu"#ffccdd"
-              
-              
-              
+              res = 0;
+              res = my_strstr(res, html_code, niz, promena);
+              res = my_strstr(res, html_code, "font-size:", "40px");
               pg_size = strlen(html_code);
-         //}
+
      }
   
 
   //}
 
     if (sendHTML_mark == 1) {
+
       while (pos[socket->ID] < pg_size) {
         if (Net_Ethernet_28j60_putByteTCP(html_code[pos[socket->ID]++], socket) == 0) {
           pos[socket->ID]--;
@@ -297,16 +298,6 @@ void Net_Ethernet_28j60_UserTCP(SOCKET_28j60_Dsc *socket) {
     }
 }
 
-/*
- * this function is called by the library
- * the user accesses to the UDP request by successive calls to Net_Ethernet_24j600_getByte()
- * the user puts data in the transmit buffer by successive calls to Net_Ethernet_24j600_putByte()
- * the function must return the length in bytes of the UDP reply, or 0 if nothing to transmit
- *
- * if you don't need to reply to UDP requests,
- * just define this function with a return(0) as single statement
- *
- */
 
 unsigned int    Net_Ethernet_28j60_UserUDP(UDP_28j60_Dsc *udpDsc) {
 

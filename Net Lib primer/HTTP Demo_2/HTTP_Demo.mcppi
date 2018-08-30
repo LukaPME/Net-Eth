@@ -27,6 +27,7 @@ ActiveImageIndex=-1
 File0=HTTP_Demo.c
 File1=__Lib_NetEthEnc28j60.h
 File2=__Lib_NetEthEnc28j60_Defs.c
+File3=..\..\HTTP_Demo_28j60\HTTP_Demo_28j60.c
 Count=4
 [EEPROM]
 Count=0
@@ -71,4 +72,4 @@ Count=3
 844=Additional Libraries
 1920=Network_Ethernet_PIC
 1996=Net_Ethernet_28j60
-Count=8
+Count=7

@@ -508,6 +508,9 @@ main
 								____DoIFC
 							____DoIFC
 				Net_Ethernet_28j60_UserTCP
+					__CC2DW
+					my_strstr
+						strlen
 					strlen
 					Net_Ethernet_28j60_putByteTCP
 						Net_Ethernet_28j60_bufferTCP

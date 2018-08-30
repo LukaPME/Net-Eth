@@ -804,6 +804,7 @@ mul_32x32_s
 mul_32x32_u
 mul_8x8_s
 my_mss_28j60
+my_strstr
 myipaddr
 mymacaddr
 n
