@@ -1,6 +1,7 @@
 #include "__Lib_NetEthEnc28j60.h"
 #include "__Lib_NetEthEnc28j60Private.h"
-
+#include "recources.h"
+//#include "html.h"
 // mE ehternet NIC pinout
 sbit Eth1_Link at RB5_bit;
 sbit Net_Ethernet_28j60_Rst at LATA5_bit;
@@ -19,87 +20,18 @@ const unsigned char httpMimeTypeScript[] = "text/plain\n\n" ;           // TEXT 
 unsigned char httpMethod[] = "GET /";
 unsigned char httpRequ[] = "GET / HTTP/1.1";
 char sendHTML_mark = 0;
-
+char txt[27];
 unsigned int pos[10];
 char i;
 unsigned long   httpCounter = 0 ;                                       // counter of HTTP requests
-char txt[7] = "";
-char txt1[4]= "";
-int ij;
-int pg_size;
-
-
-//<meta http-equiv=\"refresh\" content=\"5;url=http://192.168.1.200\">\
-//<script src=/s></script>\
-
-/*
- * stylesheets
- */
-// clock not synchronized : red background
-/*char    *CSSred = "\
-HTTP/1.1 200 OK\nContent-type: text/css\n\n\
-body {background-color: #ffccdd;}\
-" ;
-
-// clock synchronized : green background
-const char    *CSSgreen = "\
-HTTP/1.1 200 OK\nContent-type: text/css\n\n\
-body {background-color: #ddffcc;}\
-" ;*/
-
-//<link rel=\"stylesheet\" type=\"text/css\" href=\"/s.css\">\
-
-/*char    *HTMLheader = "\
-HTTP/1.1 200 OK\nConnection: close\nContent-type: text/html\n\n\
-<HTML><HEAD>\
-<link rel=\"icon\" type=\"image/png\" href=\"https://png.icons8.com/ios/50/000000/facebook.png\">\
-<TITLE>PME Clock</TITLE>\
-</HEAD><BODY>\
-<style>body {background-color: #ddffcc;}</style>\
-<center>\
-<h2>PME Clock</h2>\
-" ;
-
-char      HTMLtime[] = "\
-<h3>Time | <a href=/2>SNTP</a> | <a href=/3>Network</a> | <a href=/4>System</a> | <a href=/admin>ADMIN</a></h3>\
-<table border=1 style=\"font-size:20px ;font-family: terminal ;\" width=500>\
-<tr><td>Date and Time</td><td align=right><script>document.write(\"Cao\")</script></td></tr>\
-<tr><td>Unix Epoch</td><td align=right><script>document.write(\"EPOCH\")</script></td></tr>\
-<tr><td>Julian Day</td><td align=right><script>document.write(\"EPOCH / 24 / 3600 + 2440587.5\")</script></td></tr>\
-<tr><td>Last sync</td><td align=right><script>document.write(\"LAST\")</script></td></tr>" ;
-
-char    HTMLfooter[] = "<HTML><HEAD>\
-</table>\
-<br>\
-Pogledajte ceo proizvodni program na <a href=http://www.pme.rs target=_blank>www.pme.rs</a>\
-</center>\
-</BODY></HTML>" ;*/
-
-/*char    *HTMLheader = "\
-HTTP/1.1 200 OK\nConnection: close\nContent-type: text/html\n\n\
-" ;*/
-
-char    html_code[] = "\HTTP/1.1 200 OK\nConnection: close\nContent-type: text/html\n\n\
-<HTML><HEAD>\
-<link rel=\"icon\" type=\"image/png\" href=\"https://png.icons8.com/ios/50/000000/facebook.png\">\
-<TITLE>PME Clock</TITLE>\
-</HEAD><BODY>\
-<style>body {background-color: #ddffcc;}</style>\
-<center>\
-<h2>PME Clock</h2>\
-<h3>Time | <a href=/2>SNTP</a> | <a href=/3>Network</a> | <a href=/4>System</a> | <a href=/admin>ADMIN</a></h3>\
-<table border=1 style=\"font-size:20px ;font-family: terminal ;\" width=500>\
-<tr><td>Date and Time</td><td align=right><script>document.write(\"Cao\")</script></td></tr>\
-<tr><td>Unix Epoch</td><td align=right><script>document.write(\"EPOCH\")</script></td></tr>\
-<tr><td>Julian Day</td><td align=right><script>document.write(\"EPOCH / 24 / 3600 + 2440587.5\")</script></td></tr>\
-<tr><td>Last sync</td><td align=right><script>document.write(\"LAST\")</script></td></tr>\
-<HTML><HEAD>\
-</table>\
-<br>\
-Pogledajte ceo proizvodni program na <a href=http://www.pme.rs target=_blank>www.pme.rs</a>\
-</center>\
-</BODY></HTML>" ;
-
+int ij, ik;
+int index_br = 0;
+char buff_slanje;
+char promena1[] =" 30px";
+char promena2[] ="#999999";
+char promena3[] ="Naslov je mnogo dug";
+int pg_size = 4880 ;
+char end_petlja = 0;
 
 /***********************************
  * RAM variables
@@ -118,67 +50,9 @@ unsigned char   dyna[31] ;                                             // buffer
  * functions
  */
 
-/*
- * put the constant string pointed to by s to the ENC transmit buffer.
- */
-/*unsigned int    putConstString(const char *s)
-        {
-        unsigned int ctr = 0 ;
-
-        while(*s)
-                {
-                Net_Ethernet_24j600_putByte(*s++) ;
-                ctr++ ;
-                }
-        return(ctr) ;
-        }*/
-/*
- * it will be much faster to use library Net_Ethernet_24j600_putConstString routine
- * instead of putConstString routine above. However, the code will be a little
- * bit bigger. User should choose between size and speed and pick the implementation that
- * suites him best. If you choose to go with the putConstString definition above
- * the #define line below should be commented out.
- *
- */
 #define putConstString  Net_Ethernet_28j60_putConstStringTCP
-
-/*
- * put the string pointed to by s to the ENC transmit buffer
- */
-/*unsigned int    putString(char *s)
-        {
-        unsigned int ctr = 0 ;
-
-        while(*s)
-                {
-                Net_Ethernet_24j600_putByte(*s++) ;
-
-                ctr++ ;
-                }
-        return(ctr) ;
-        }*/
-/*
- * it will be much faster to use library Net_Ethernet_24j600_putString routine
- * instead of putString routine above. However, the code will be a little
- * bit bigger. User should choose between size and speed and pick the implementation that
- * suites him best. If you choose to go with the putString definition above
- * the #define line below should be commented out.
- *
- */
 #define putString  Net_Ethernet_28j60_putStringTCP
 
-/*
- * this function is called by the library
- * the user accesses to the HTTP request by successive calls to Net_Ethernet_24j600_getByte()
- * the user puts data in the transmit buffer by successive calls to Net_Ethernet_24j600_putByte()
- * the function must return the length in bytes of the HTTP reply, or 0 if nothing to transmit
- *
- * if you don't need to reply to HTTP requests,
- * just define this function with a return(0) as single statement
- *
- */
-
-SOCKET_28j60_Dsc *currSocket, *socketHTML;
 const char *indexPagePtr;
 
 const char RESET = 0;
@@ -187,114 +61,130 @@ const char SET   = 1;
 char sendRestOfPage_flag = RESET;
 char disconnect_flag     = RESET;
 
-int my_strstr(int index, char *s2, char *s1, char *s3)
+int my_strstr(int index, char *s1)
 {
   int i, j, k;
   int flag = 0;
 
   //if ((s2 == 0 || s1 == 0)) return 0;
 
-  for( i = index; s2[i] != '\0'; i++)
+  for( i = index; html_code[i] != '\0'; i++)
   {
-    if (s2[i] == s1[0])
+    if (html_code[i] == s1[0])
     {
       for (j = i; ; j++)
       {
-        if (s1[j-i] == '\0'){ flag = 1; 
+        if (s1[j-i] == '\0'){ flag = 1;
         break;}
-        if (s2[j] == s1[j-i]) 
+        if (html_code[j] == s1[j-i])
         continue;
-        else 
+        else
         break;
       }
     }
-    if (flag == 1) 
+    if (flag == 1)
     break;
   }
 
-   k=0;
+   /*k=0;
    for ( i = j ; i < (j + strlen(s3)) ; i++) {
        html_code[i] = s3[k];
        k++;
-   }
+   }*/
    return j;
-} /*if (flag){
-  //return (s2+i);
-  return (j);
-  }
-  else return 0;*/
+}
 
+void Html_Change(unsigned int pom_promena, SOCKET_28j60_Dsc *socketHTML, char *pro) {
+   for (ik = index_br; ik < strlen(pro); ik++) {
+      buff_slanje = pro[ik];
+      pom_promena = pos[socketHTML->ID];
+      pos[socketHTML->ID]++;
+      if (Net_Ethernet_28j60_putByteTCP(buff_slanje, socketHTML) == 0) {
+         pos[socketHTML->ID]--;
+         index_br = ik;
+         end_petlja = 1;
+         return;
+      }
+   }
+   index_br = 0;
+   //return pom_promena;
+}
 
 void Net_Ethernet_28j60_UserTCP(SOCKET_28j60_Dsc *socket) {
   unsigned int    len;                   // my reply length
-  int    i ;
+  int    i;
   int res = 0;
-  int rezSta;                   // general purpose integer
-  char pg_num;
-  //char promena[6] ={'7','f','1','1','1','a'};
-  char promena[] ="#aa0f0f";
-  char niz[] ="background-color: ";
-  //char niz[] = "";
-  char j = 0;
-  char pomniz[] = "";
+  unsigned int prva_promena, druga_promena, treca_promena;
 
   // I listen only to web request on port 80
-  /*if(socket->destPort != 80) {
+  if(socket->destPort != 80) {
     return;
-  }*/
+  }
 
   // get 10 first bytes only of the request, the rest does not matter here
-  /*for(len = 0; len < 10; len++){
+  for(len = 0; len < 10; len++){
     getRequest[len] = Net_Ethernet_28j60_getByte();
   }
   getRequest[len] = 0;
-  len = 0 ;*/
+  len = 0 ;
 
   // only GET method is supported here
-  /*if(memcmp(getRequest, httpMethod, 5)&&(socket->state != 3)){
+  if(memcmp(getRequest, httpMethod, 5)&&(socket->state != 3)){
     return;
-  }*/
+  }
 
     if (sendHTML_mark == 0) {
-      sendHTML_mark = 1;
+       sendHTML_mark = 1;
 
-      /*switch(getRequest[5])
-         {
-         case 's':
-              strcpy(html_code, "");
-              strcat(html_code, CSSred);
-              pg_size = strlen(html_code);
-              break ;
-         case '1':
-         default:*/
-              //strcpy(html_code, "");
-              //strcat(html_code, HTMLheader);
-              //strcat(html_code, HTMLtime);
-              //strcat(html_code, HTMLfooter);
-              res = 0;
-              res = my_strstr(res, html_code, niz, promena);
-              res = my_strstr(res, html_code, "font-size:", "40px");
-              pg_size = strlen(html_code);
+          res = 0;
+          res = my_strstr(res, "font-size:");
+          prva_promena = res ;
+          res = my_strstr(res,"color:");
+          druga_promena = res;
+          res = my_strstr(res,"<title> ");
+          treca_promena = res;
+
 
      }
   
 
-  //}
-
     if (sendHTML_mark == 1) {
 
       while (pos[socket->ID] < pg_size) {
-        if (Net_Ethernet_28j60_putByteTCP(html_code[pos[socket->ID]++], socket) == 0) {
-          pos[socket->ID]--;
-          break;
+      
+        if ( (pos[socket->ID] == prva_promena) || (end_petlja == 1) ) {
+          if (end_petlja == 1) end_petlja = 0;
+          Html_Change(prva_promena, socket, promena1);
+          if (end_petlja == 1) break;
+        }
+
+        else  if ( (pos[socket->ID] == druga_promena) || (end_petlja == 1) ) {
+          if (end_petlja == 1) end_petlja = 0;
+          Html_Change(druga_promena, socket, promena2);
+          if (end_petlja == 1) break;
+        }
+        else  if ( (pos[socket->ID] == treca_promena) || (end_petlja == 1) ) {
+          if (end_petlja == 1) end_petlja = 0;
+          Html_Change(treca_promena, socket, promena3);
+          if (end_petlja == 1) break;
+        }
+
+        else {
+          buff_slanje = html_code[pos[socket->ID]++];
+          if (Net_Ethernet_28j60_putByteTCP(buff_slanje, socket) == 0) {
+             pos[socket->ID]--;
+             break;
+          }
         }
       }
+      
       if( Net_Ethernet_28j60_bufferEmptyTCP(socket) && (pos[socket->ID] >= pg_size) ) {
         Net_Ethernet_28j60_disconnectTCP(socket);
         socket_28j60[socket->ID].state = 0;
         sendHTML_mark = 0;
         pos[socket->ID] = 0;
       }
+      
     }
 }
 
@@ -364,7 +254,6 @@ void interrupt() {
   }
 }
 
-
 /*
  * main entry
  */
@@ -385,14 +274,10 @@ void    main() {
   PORTD = 0 ;
   TRISD = 0 ;             // set PORTD as output
   SLRCON = 0;
-  /*
-   * CS bit on RC1
-   * my MAC & IP address
-   * full duplex
-   */
 
   Net_Ethernet_28j60_stackInitTCP();
   SPI1_Init();
+  SPI_Rd_Ptr = SPI1_Read;
   Net_Ethernet_28j60_Init(myMacAddr, myIpAddr, Net_Ethernet_28j60_FULLDUPLEX)  ;
   Net_Ethernet_28j60_confNetwork(ipMask, gwIpAddr, dnsIpAddr);
 

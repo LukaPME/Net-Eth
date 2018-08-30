@@ -25,10 +25,9 @@ Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
 File0=HTTP_Demo.c
-File1=__Lib_NetEthEnc28j60.h
-File2=__Lib_NetEthEnc28j60_Defs.c
-File3=..\..\HTTP_Demo_28j60\HTTP_Demo_28j60.c
-Count=4
+File1=recources.h
+File2=..\..\PoE sat - NOVA SEMA !!!!!!!\SE9M.c
+Count=3
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -45,7 +44,8 @@ Count=1
 [HEADERS]
 File0=__Lib_NetEthEnc28j60.h
 File1=__Lib_NetEthEnc28j60Private.h
-Count=2
+File2=recources.h
+Count=3
 [PLDS]
 Count=0
 [Useses]
@@ -72,4 +72,4 @@ Count=3
 844=Additional Libraries
 1920=Network_Ethernet_PIC
 1996=Net_Ethernet_28j60
-Count=7
+Count=8

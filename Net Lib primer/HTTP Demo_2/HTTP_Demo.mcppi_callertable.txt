@@ -508,10 +508,58 @@ main
 								____DoIFC
 							____DoIFC
 				Net_Ethernet_28j60_UserTCP
-					__CC2DW
+					Net_Ethernet_28j60_getByte
+						____DoIFC
+					memcmp
 					my_strstr
+					Html_Change
 						strlen
-					strlen
+						Net_Ethernet_28j60_putByteTCP
+							Net_Ethernet_28j60_bufferTCP
+								Mul_16X16_U
+								Net_Ethernet_28j60_txTCP
+									Mul_16X16_U
+									Net_Ethernet_28j60_writeMem
+										Net_Ethernet_28j60_writeAddr
+											____DoIFC
+										____DoIFC
+									Net_Ethernet_28j60_putBytes
+										____DoIFC
+									Net_Ethernet_28j60_putByte
+										____DoIFC
+									Net_Ethernet_28j60_checksum
+										Net_Ethernet_28j60_writeAddr
+											____DoIFC
+										Net_Ethernet_28j60_setBitReg
+											____DoIFC
+										Net_Ethernet_28j60_readReg
+											____DoIFC
+									Net_Ethernet_28j60_readReg
+										____DoIFC
+									Net_Ethernet_28j60_writeMemory
+										Net_Ethernet_28j60_writeMem
+											Net_Ethernet_28j60_writeAddr
+												____DoIFC
+											____DoIFC
+										Net_Ethernet_28j60_putByte
+											____DoIFC
+									Net_Ethernet_28j60_TXpacket
+										Net_Ethernet_28j60_writeMem
+											Net_Ethernet_28j60_writeAddr
+												____DoIFC
+											____DoIFC
+										Net_Ethernet_28j60_writeAddr
+											____DoIFC
+										Net_Ethernet_28j60_setBitReg
+											____DoIFC
+										Net_Ethernet_28j60_clearBitReg
+											____DoIFC
+										Net_Ethernet_28j60_readReg
+											____DoIFC
+										Net_Ethernet_28j60_readMem
+											Net_Ethernet_28j60_writeAddr
+												____DoIFC
+											____DoIFC
 					Net_Ethernet_28j60_putByteTCP
 						Net_Ethernet_28j60_bufferTCP
 							Mul_16X16_U

@@ -1,14 +1,20 @@
 <BOOKMARKS>
   <BM>
     <ID>8</ID>
-    <Line>134</Line>
+    <Line>120</Line>
     <File>D:\Luka-Probe\MicroC\Net Lib primer\HTTP Demo_2\HTTP_Demo.c</File>
     <Comment>  }</Comment>
   </BM>
   <BM>
     <ID>8</ID>
-    <Line>134</Line>
+    <Line>120</Line>
     <File>C:\Users\PME-Server\Desktop\New folder\HTTP Demo_2\HTTP_Demo.c</File>
     <Comment>                      http://ww1.microchip.com/downloads/en/DeviceDoc/41291F.pdf</Comment>
+  </BM>
+  <BM>
+    <ID>8</ID>
+    <Line>120</Line>
+    <File>D:\Luka-Probe\MicroC\Net Lib header HTML\HTTP Demo_2\HTTP_Demo.c</File>
+    <Comment>              res = my_strstr(res, html_code, "font-size:", "40px");</Comment>
   </BM>
 </BOOKMARKS>

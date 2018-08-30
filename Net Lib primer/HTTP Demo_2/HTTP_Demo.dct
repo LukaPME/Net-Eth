@@ -185,6 +185,7 @@ brgh
 brgh_bit
 broadcastmark
 bsr
+buff_slanje
 byte2double
 bytetohex
 bytetostr
@@ -338,7 +339,6 @@ cs
 cs_bit
 csrc
 csrc_bit
-currsocket
 cvr0
 cvr0_bit
 cvr1
@@ -456,6 +456,7 @@ eeip
 eeip_bit
 eepgd
 eepgd_bit
+end_petlja
 equals_double
 eth1_link
 eth1_link_direction
@@ -528,6 +529,7 @@ hlvdl2
 hlvdl2_bit
 hlvdl3
 hlvdl3_bit
+html_change
 html_code
 httpcounter
 httpheader
@@ -543,6 +545,8 @@ ics_off
 idlen
 idlen_bit
 ij
+ik
+index_br
 indexpageptr
 indf0
 indf1
@@ -1038,6 +1042,9 @@ private_time_28j60
 prod
 prodh
 prodl
+promena1
+promena2
+promena3
 prsen
 prsen_bit
 psa
@@ -1271,7 +1278,6 @@ slre_bit
 smp
 smp_bit
 socket_28j60
-sockethtml
 sp0
 sp0_bit
 sp1
@@ -1610,7 +1616,6 @@ txip_bit
 txreg
 txsta
 txt
-txt1
 ua
 ua_bit
 udprecord_28j60

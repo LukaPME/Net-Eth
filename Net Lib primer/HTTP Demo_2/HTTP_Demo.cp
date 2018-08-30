@@ -1,6 +1,6 @@
-#line 1 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
-#line 1 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60.h"
-#line 111 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60.h"
+#line 1 "D:/Luka-Probe/MicroC/Net Lib header HTML/HTTP Demo_2/HTTP_Demo.c"
+#line 1 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60.h"
+#line 111 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60.h"
 typedef struct
  {
  unsigned char valid;
@@ -85,7 +85,7 @@ extern const unsigned int RETRANSMIT_WAIT_28j60;
 
 extern char tx_buffers_28j60[][];
 extern SOCKET_28j60_Dsc socket_28j60[];
-#line 206 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60.h"
+#line 206 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60.h"
 extern void Net_Ethernet_28j60_Init(unsigned char *resetPort, unsigned char resetBit, unsigned char *CSport, unsigned char CSbit, unsigned char *mac, unsigned char *ip, unsigned char configuration);
 extern unsigned char Net_Ethernet_28j60_doPacket();
 extern void Net_Ethernet_28j60_putByte(unsigned char b);
@@ -109,63 +109,63 @@ extern unsigned int Net_Ethernet_28j60_putStringTCP(char *ptr, SOCKET_28j60_Dsc 
 extern unsigned int Net_Ethernet_28j60_putConstStringTCP(const char *ptr, SOCKET_28j60_Dsc *socket);
 extern char Net_Ethernet_28j60_bufferEmptyTCP(SOCKET_28j60_Dsc *socket);
 extern void Net_Ethernet_28j60_stackInitTCP();
-#line 1 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
-#line 10 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 1 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
+#line 10 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 unsigned char Net_Ethernet_28j60_readPacket();
-#line 24 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 24 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 char Net_Ethernet_28j60_doTCP(unsigned int start, unsigned int ipHeaderLen, unsigned int payloadAddr);
-#line 38 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 38 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_doUDP(unsigned int start, unsigned char ipHeaderLen, unsigned int payloadAddr);
 unsigned int Net_Ethernet_28j60_flushUDP(unsigned char *destMac, unsigned char *destIP, unsigned int sourcePort, unsigned int destPort, unsigned int pktLen);
-#line 49 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 49 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_doDHCP();
 unsigned char Net_Ethernet_28j60_DHCPReceive(void);
 unsigned char Net_Ethernet_28j60_DHCPmsg(unsigned char messageType, unsigned char renewFlag);
-#line 62 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 62 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_doDNS();
-#line 72 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 72 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_doARP();
-#line 84 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 84 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_checksum(unsigned int start, unsigned int l);
-#line 100 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 100 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_RAMcopy(unsigned int start, unsigned int stop, unsigned int dest, unsigned char w);
-#line 111 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 111 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_MACswap();
-#line 122 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 122 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_IPswap(void);
-#line 133 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 133 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 unsigned char Net_Ethernet_28j60_TXpacket(unsigned int l);
-#line 147 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 147 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 unsigned char Net_Ethernet_28j60_memcmp(unsigned int addr, unsigned char *s, unsigned char l);
-#line 161 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 161 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_memcpy(unsigned int addr, unsigned char *s, unsigned int l);
-#line 176 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 176 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_writeMemory(unsigned int addr, unsigned char v1, unsigned char v2);
-#line 190 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 190 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_writeMemory2(unsigned int v);
-#line 203 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 203 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_writeMem(unsigned int addr, unsigned char v1);
-#line 215 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 215 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 unsigned char Net_Ethernet_28j60_readMem(unsigned int addr);
-#line 228 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 228 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 unsigned char Net_Ethernet_28j60_readReg(unsigned char addr);
-#line 242 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 242 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_writeReg(unsigned char addr, unsigned short v);
-#line 256 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 256 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_setBitReg(unsigned char addr, unsigned char mask);
-#line 270 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 270 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_clearBitReg(unsigned char addr, unsigned char mask);
-#line 284 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 284 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_setRxReadAddress(unsigned addr);
-#line 298 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 298 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_writeAddr(unsigned char addr, unsigned int v);
-#line 312 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 312 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_writePHY(unsigned char reg, unsigned short h, unsigned short l);
-#line 326 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 326 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_readPHY(unsigned char reg, unsigned char *h, unsigned char *l);
-#line 338 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 338 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_delay();
-#line 352 "d:/luka-probe/microc/net lib primer/http demo_2/__lib_netethenc28j60private.h"
+#line 352 "d:/luka-probe/microc/net lib header html/http demo_2/__lib_netethenc28j60private.h"
 void Net_Ethernet_28j60_Init2(unsigned char fullDuplex);
 void Net_Ethernet_28j60_socketInitTCP(char id);
 void Net_Ethernet_28j60_timerTCP();
@@ -174,31 +174,36 @@ extern unsigned int Net_Ethernet_28j60_pktLen;
 
 extern char Net_Ethernet_28j60_bufferTCP(char c, char tx, char curr_sock);
 extern char Net_Ethernet_28j60_txTCP (char flag, char curr_sock);
-#line 5 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+#line 1 "d:/luka-probe/microc/net lib header html/http demo_2/recources.h"
+#line 142 "d:/luka-probe/microc/net lib header html/http demo_2/recources.h"
+const char html_code[] = "\\HTTP/1.1 200 OK\nConnection: close\nContent-type: text/html\n\n<html xmlns='http://www.w3.org/1999/xhtml'><head><head><style>body{\margin: 0 ; padding:0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.4em; color: #444444; background-color: #777777;}h1 {    margin:0px; font-weight: bold; font-size: 22px; color:#518b10;}h1 span {        font-size: 14px;        color: #666666;        line-height: 1.6em;}h2 {        font-weight: bold;        margin-bottom: 0px;        font-size: 14px;        color:#427707;        padding-top: 20px;}#templatemo_left_column {        float: left;        width: 483px;}#templatemo_left_content {        float: left;        margin: 0px 30px 30px 30px;        padding-left: 10px;        padding-bottom: 10px;        width: 413px;        text-align: justify;}.templatemo_service {        font-weight: bold;        font-size: 14px;        color:#427707;        height: 31px;        padding-top: 20px;        padding-left: 0px;        }#templatemo_right_column {        float: right;        width: 287px;}.templatemo_menu_list {        float: left;        width: 230px;        padding-left: 25px;}.templatemo_menu_list ul {        list-style-type: none;        margin: 10px;        padding: 0;        width: 213px;}#templatemo_right_content ul {        list-style-type: disc;}.templatemo_special {        float: left;        width: 180px;}#templatemo_footer {        clear: both;        width: 770px;        height: 32px;        padding-top: 20px;        text-align: center;        background: #545e54;        font-weight: bold;        color: #FFFFFF;}#templatemo_footer a {        color: #FFFFFF;}</style></head><meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><title> EasyPIC PRO v7      </title><meta name='keywords' content='free website template, CSS, cooking website, free layout download, templatemo' /><meta name='description' content='Cooking Template - free CSS website layout for anyone' /></head><body><div id='templatemo_container'>  <div id='templatemo_left_column'>    <div id='templatemo_title'>MikroElektronika</div>    <div id='templatemo_header'>    </div>    <div id='templatemo_left_content'>      <h1>EasyPIC PRO v7<br />      <span>Development system</span></h1>      <p>We presend PIC18 MCUs microcontrollers.</p>      <p>Board is delivered with MCU socket containing PIC18F87K22 microntroller.</p>      <div class='templatemo_service'>What is EasyPIC PRO v7?</div>      <p>EasyPIC PRO™ v7 is a full-featured development board for high pin-count 8-bit PIC® microntrollers. It contains many on-board           modules necessary for development variety of applications, including graphics, Ethernet, USB, Temperature measurement and other.           On-board mikroProg™ programmer and debugger supports over 155 PIC® microcontrollers. Board is delivered with MCU socket           containing PIC18F87K22 microntroller.</p>      <div class='templatemo_aboutus'>Key Benefits</div>      <p>Board features RS-232, USB UART, Ethernet connector, LCD, Serial EEPROM, Graphic LCD 128x64, Touch screen, Buzzer...</p>      <p>Development system features IDC10 connectors for all available ports, that are 100% compatible with over 70 additional boards from mikroElektronika.</p>    </div>  </div>  <div id='templatemo_right_column'>    <div class='templatemo_domain'><a href='http://www.mikroe.com' > http://www.mikroe.com</a></div>    <div id='templatemo_right_content'>        <h2>What&rsquo;s on EasyPIC PRO v7?</h2>        <ul>          <li>mikroProg with ICD support</li>          <li>RS-232 </li>          <li>Power supply source</li>          <li>External power supply</li>          <li>87 LEDs</li>          <li>87 push buttons</li>          <li>Temperature Sensor</li>          <li>LCD 2x16</li>          <li>Graphic LCD 128x64</li>        </ul>        <h2>About MikroElektronika</h2>                <p><strong>MikroElektronika</strong>        was established in 1997 as a publishing company specialized in electronics. It has experienced great expansion since then, in both domain and influence.</br></br>                Today MikroElektronika produces a wide range of development tools and compilers for various microcontroller families. The production facilities of mikroElektronika                 are equipped with true hole and SMD assembly technology. These two production lines enable the company                 to manufacture first class products with complete hardware and software solutions including printed manuals.</p>    </div>    <div id='templatemo_contact'>        <strong>Contact Us</strong><br />      Fax: + 381 11 63 09 644<br />      Email:   office@mikre.com<br />    </div>  </div>  <div id='templatemo_footer'><a href='http://www.mikroe.com' target='_parent'>Copyright &copy; 1998&ndash;2017. MikroElektronika. All rights reserved.</a></div></body></html>";
+#line 6 "D:/Luka-Probe/MicroC/Net Lib header HTML/HTTP Demo_2/HTTP_Demo.c"
 sbit Eth1_Link at RB5_bit;
 sbit Net_Ethernet_28j60_Rst at LATA5_bit;
 sbit Net_Ethernet_28j60_CS at LATA4_bit;
 sbit Eth1_Link_Direction at TRISB5_bit;
 sbit Net_Ethernet_28j60_Rst_Direction at TRISA5_bit;
 sbit Net_Ethernet_28j60_CS_Direction at TRISA4_bit;
-#line 16 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+#line 17 "D:/Luka-Probe/MicroC/Net Lib header HTML/HTTP Demo_2/HTTP_Demo.c"
 const code unsigned char httpHeader[] = "HTTP/1.1 200 OK\nContent-Length: 7787\nConnection: close\nContent-type: ";
 const code unsigned char httpMimeTypeHTML[] = "text/html\n\n";
 const unsigned char httpMimeTypeScript[] = "text/plain\n\n" ;
 unsigned char httpMethod[] = "GET /";
 unsigned char httpRequ[] = "GET / HTTP/1.1";
 char sendHTML_mark = 0;
-
+char txt[27];
 unsigned int pos[10];
 char i;
 unsigned long httpCounter = 0 ;
-char txt[7] = "";
-char txt1[4]= "";
-int ij;
-int pg_size;
-#line 101 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
-char html_code[] = "\HTTP/1.1 200 OK\nConnection: close\nContent-type: text/html\n\n<HTML><HEAD><link rel=\"icon\" type=\"image/png\" href=\"https://png.icons8.com/ios/50/000000/facebook.png\"><TITLE>PME Clock</TITLE></HEAD><BODY><style>body {background-color: #ddffcc;}</style><center><h2>PME Clock</h2><h3>Time | <a href=/2>SNTP</a> | <a href=/3>Network</a> | <a href=/4>System</a> | <a href=/admin>ADMIN</a></h3><table border=1 style=\"font-size:20px ;font-family: terminal ;\" width=500><tr><td>Date and Time</td><td align=right><script>document.write(\"Cao\")</script></td></tr><tr><td>Unix Epoch</td><td align=right><script>document.write(\"EPOCH\")</script></td></tr><tr><td>Julian Day</td><td align=right><script>document.write(\"EPOCH / 24 / 3600 + 2440587.5\")</script></td></tr><tr><td>Last sync</td><td align=right><script>document.write(\"LAST\")</script></td></tr><HTML><HEAD></table><br>Pogledajte ceo proizvodni program na <a href=http://www.pme.rs target=_blank>www.pme.rs</a></center></BODY></HTML>" ;
-#line 107 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+int ij, ik;
+int index_br = 0;
+char buff_slanje;
+char promena1[] =" 30px";
+char promena2[] ="#999999";
+char promena3[] ="Naslov je mnogo dug";
+int pg_size = 4880 ;
+char end_petlja = 0;
+#line 39 "D:/Luka-Probe/MicroC/Net Lib header HTML/HTTP Demo_2/HTTP_Demo.c"
 unsigned char myMacAddr[6] = {0x00, 0x14, 0xA5, 0x76, 0x19, 0x3b};
 unsigned char myIpAddr[4] = {192, 168, 1, 222 };
 unsigned char gwIpAddr[4] = {192, 168, 1, 1 };
@@ -207,8 +212,7 @@ unsigned char dnsIpAddr[4] = {192, 168, 20, 1 };
 
 unsigned char getRequest[15];
 unsigned char dyna[31] ;
-#line 181 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
-SOCKET_28j60_Dsc *currSocket, *socketHTML;
+#line 56 "D:/Luka-Probe/MicroC/Net Lib header HTML/HTTP Demo_2/HTTP_Demo.c"
 const char *indexPagePtr;
 
 const char RESET = 0;
@@ -217,22 +221,22 @@ const char SET = 1;
 char sendRestOfPage_flag = RESET;
 char disconnect_flag = RESET;
 
-int my_strstr(int index, char *s2, char *s1, char *s3)
+int my_strstr(int index, char *s1)
 {
  int i, j, k;
  int flag = 0;
 
 
 
- for( i = index; s2[i] != '\0'; i++)
+ for( i = index; html_code[i] != '\0'; i++)
  {
- if (s2[i] == s1[0])
+ if (html_code[i] == s1[0])
  {
  for (j = i; ; j++)
  {
  if (s1[j-i] == '\0'){ flag = 1;
  break;}
- if (s2[j] == s1[j-i])
+ if (html_code[j] == s1[j-i])
  continue;
  else
  break;
@@ -241,60 +245,101 @@ int my_strstr(int index, char *s2, char *s1, char *s3)
  if (flag == 1)
  break;
  }
-
- k=0;
- for ( i = j ; i < (j + strlen(s3)) ; i++) {
- html_code[i] = s3[k];
- k++;
- }
+#line 94 "D:/Luka-Probe/MicroC/Net Lib header HTML/HTTP Demo_2/HTTP_Demo.c"
  return j;
-#line 225 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
 }
 
+void Html_Change(unsigned int pom_promena, SOCKET_28j60_Dsc *socketHTML, char *pro) {
+ for (ik = index_br; ik < strlen(pro); ik++) {
+ buff_slanje = pro[ik];
+ pom_promena = pos[socketHTML->ID];
+ pos[socketHTML->ID]++;
+ if (Net_Ethernet_28j60_putByteTCP(buff_slanje, socketHTML) == 0) {
+ pos[socketHTML->ID]--;
+ index_br = ik;
+ end_petlja = 1;
+ return;
+ }
+ }
+ index_br = 0;
+
+}
 
 void Net_Ethernet_28j60_UserTCP(SOCKET_28j60_Dsc *socket) {
  unsigned int len;
- int i ;
+ int i;
  int res = 0;
- int rezSta;
- char pg_num;
-
- char promena[] ="#aa0f0f";
- char niz[] ="background-color: ";
-
- char j = 0;
- char pomniz[] = "";
-#line 258 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
- if (sendHTML_mark == 0) {
- sendHTML_mark = 1;
-#line 274 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
- res = 0;
- res = my_strstr(res, html_code, niz, promena);
-#line 282 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
- res = my_strstr(res, html_code,"font-size:","40px");
+ unsigned int prva_promena, druga_promena, treca_promena;
 
 
- pg_size = strlen(html_code);
-
+ if(socket->destPort != 80) {
+ return;
  }
 
 
+ for(len = 0; len < 10; len++){
+ getRequest[len] = Net_Ethernet_28j60_getByte();
+ }
+ getRequest[len] = 0;
+ len = 0 ;
+
+
+ if(memcmp(getRequest, httpMethod, 5)&&(socket->state != 3)){
+ return;
+ }
+
+ if (sendHTML_mark == 0) {
+ sendHTML_mark = 1;
+
+ res = 0;
+ res = my_strstr(res, "font-size:");
+ prva_promena = res ;
+ res = my_strstr(res,"color:");
+ druga_promena = res;
+ res = my_strstr(res,"<title> ");
+ treca_promena = res;
+
+
+ }
 
 
  if (sendHTML_mark == 1) {
 
  while (pos[socket->ID] < pg_size) {
- if (Net_Ethernet_28j60_putByteTCP(html_code[pos[socket->ID]++], socket) == 0) {
+
+ if ( (pos[socket->ID] == prva_promena) || (end_petlja == 1) ) {
+ if (end_petlja == 1) end_petlja = 0;
+ Html_Change(prva_promena, socket, promena1);
+ if (end_petlja == 1) break;
+ }
+
+ else if ( (pos[socket->ID] == druga_promena) || (end_petlja == 1) ) {
+ if (end_petlja == 1) end_petlja = 0;
+ Html_Change(druga_promena, socket, promena2);
+ if (end_petlja == 1) break;
+ }
+ else if ( (pos[socket->ID] == treca_promena) || (end_petlja == 1) ) {
+ if (end_petlja == 1) end_petlja = 0;
+ Html_Change(treca_promena, socket, promena3);
+ if (end_petlja == 1) break;
+ }
+
+ else {
+ buff_slanje = html_code[pos[socket->ID]++];
+ if (Net_Ethernet_28j60_putByteTCP(buff_slanje, socket) == 0) {
  pos[socket->ID]--;
  break;
  }
  }
+ }
+
  if( Net_Ethernet_28j60_bufferEmptyTCP(socket) && (pos[socket->ID] >= pg_size) ) {
  Net_Ethernet_28j60_disconnectTCP(socket);
  socket_28j60[socket->ID].state = 0;
  sendHTML_mark = 0;
  pos[socket->ID] = 0;
  }
+
  }
 }
 
@@ -363,7 +408,7 @@ void interrupt() {
  TMR0IF_bit = 0;
  }
 }
-#line 379 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+#line 260 "D:/Luka-Probe/MicroC/Net Lib header HTML/HTTP Demo_2/HTTP_Demo.c"
 void main() {
  MCUInit();
  ANSEL = 0x0C;
@@ -381,9 +426,10 @@ void main() {
  PORTD = 0 ;
  TRISD = 0 ;
  SLRCON = 0;
-#line 402 "D:/Luka-Probe/MicroC/Net Lib primer/HTTP Demo_2/HTTP_Demo.c"
+
  Net_Ethernet_28j60_stackInitTCP();
  SPI1_Init();
+ SPI_Rd_Ptr = SPI1_Read;
  Net_Ethernet_28j60_Init(myMacAddr, myIpAddr,  0b1 ) ;
  Net_Ethernet_28j60_confNetwork(ipMask, gwIpAddr, dnsIpAddr);
 
